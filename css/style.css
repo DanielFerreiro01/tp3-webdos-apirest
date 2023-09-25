@@ -1,0 +1,12 @@
+.navbar{
+    padding: 10px 35px 10px 35px;
+}
+
+.form-inline {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-inline input {
+    margin-right: 15px;
+}
