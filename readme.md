@@ -1,12 +1,3 @@
-Dentro del repositorio git se deberá tener un documento llamado “README.md” que contenga:
-nombres de los integrantes del grupo (emails)
-Temática del TPE
-Breve descripción de la temática
-Diagrama de entidad relación (DER)
-El diagrama entidad relación (DER) del modelo de datos planteado (archivo jpeg o pdf)
-El código SQL que genera la base de datos (exportado desde phpMyAdmin)
-
-
 Nombres de los integrantes:
 
 Daniel Ferreiro: daniiferreiro26@gmail.com
