@@ -1,0 +1,161 @@
+<?php require_once 'templates/headerAdmin.phtml'; ?>
+
+<br>
+
+<h2 style="margin-left: 25px;">Ingrese sus pedidos</h2>
+
+<br>
+
+<div class="container-home-admin d-flex justify-content-center align-items-start" style="min-height: 100vh;">
+
+<!-- CARGA DE PEDIDOS VISTA ADMIN -->
+
+  <div class="conteiner-form mx-auto" style="width: 30vw;">
+    <form style="width: 30vw;">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre del cliente</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el nombre del cliente" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ciudad</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese la ciudad del cliente" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Dirección</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese la dirección del cliente" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Código postal</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el código postal del cliente" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Fecha de envio</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese la fecha del envio" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Producto</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el producto" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Cantidad</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese la cantidad del producto" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Total a pagar</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el total del pedido" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Categoría</label>
+        <select class="form-control mr-sm-2" type="search" placeholder="Seleccione una categoría" aria-label="Search">
+          <option value="opcion1">Bicicleta</option>
+          <option value="opcion2">Moto</option>
+          <option value="opcion3">Utilitaria</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Repartidor</label>
+        <select class="form-control mr-sm-2" type="search" placeholder="Seleccione un repartidor" aria-label="Search">
+          <option value="opcion1">Repartidor 1</option>
+          <option value="opcion2">Repartidor 2</option>
+          <option value="opcion3">Repartidor 3</option>
+        </select>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Asignar</button>
+    </form>
+  </div>
+
+<!-- TABLA DE PEIDOS VISTA ADMIN -->
+
+  <div class="container-tabla mx-auto">
+
+  <!-- Buscador de pedidos -->
+    <div class="container-nav-form mx-auto">
+        <form class="form-inline my-4 my-lg-2">
+            <input class="form-control mr-sm-2" style="width: 60%;" type="search" placeholder="Buscar pedido" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </div>
+  <!-- Tabla de pedidos -->
+    <div class="container-tabla mx-auto" style="width: 60vw; border: 1px solid #ccc; border-radius: 10px;">
+      <table id="table" class="table table-hover align-middle">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">#</th>
+            <th scope="col" class="text-center">Cliente</th>
+            <th scope="col" class="text-center">Dirección</th>
+            <th scope="col" class="text-center">Repartidor</th>
+            <th scope="col" class="text-center">Estado del pedido</th>
+            <th scope="col" class="text-center">Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row" class="text-center">1</th>
+              <td class="text-center">Grido helados</td>
+              <td class="text-center">Quintana 750</td>
+              <td class="text-center">Repartidor 1</td>
+              <td class="text-center"><a href="" style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
+              <td class="text-center">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Editar
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Editar</a></li>
+                    <li><a class="dropdown-item" href="#">Borrar</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-center">2</th>
+              <td class="text-center">Los Manjares</td>
+              <td class="text-center">Ayacucho 1219</td>
+              <td class="text-center">Repartidor 2</td>
+              <td class="text-center"><a href="" style="background-color: #CEEE9F; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Entregado</a></td>
+              <td class="text-center">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Editar
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Editar</a></li>
+                    <li><a class="dropdown-item" href="#">Borrar</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+            <th scope="row" class="text-center">3</th>
+              <td class="text-center">Tierra de azafranes</td>
+              <td class="text-center">Paz 432</td>
+              <td class="text-center">Repartidor 3</td>
+              <td class="text-center"><a href="" style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
+              <td class="text-center">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Editar
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Editar</a></li>
+                    <li><a class="dropdown-item" href="#">Borrar</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<br>
+
+<br>
+
+
+<?php require_once 'templates/footer.phtml'; ?>

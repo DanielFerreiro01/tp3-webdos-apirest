@@ -1,8 +1,8 @@
 <?php
-// require_once 'app/controller/adminController.php';
-// require_once 'app/controller/authController.php';
+require_once 'app/controllers/adminController.php';
+// require_once 'app/controllers/authController.php';
 require_once 'app/controllers/homeController.php';
-// require_once 'app/controller/ryderController.php';
+require_once 'app/controllers/ryderController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -37,13 +37,15 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller->showHome();
         break;
     case 'acceso-publico':
-        $controller = new HomeController();
-        $controller->showAccess();
-        break;
-    case 'home-ryder':
         $controller = new RyderController();
         $controller->showHomeR();
-        break;  
+        // $controller = new HomeController();
+        // $controller->showAccess();
+        break;
+    // case 'home-ryder':
+    //     $controller = new RyderController();
+    //     $controller->showHomeR();
+    //     break;  
     case 'finalizar':
         $controller = new RyderController();
         $controller->finishOrder($params[0]);

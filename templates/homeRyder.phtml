@@ -1,0 +1,52 @@
+<?php require_once 'templates/headerRyders.phtml'; ?>
+
+<br>
+
+<h2 style="margin-left: 25px;">Pedidos asignados</h2>
+
+<br>
+
+<div class="container-nav-form mx-auto" style="width: 97vw;">
+    <form class="form-inline my-4 my-lg-2 w-50" style="width: 40vw; ">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar pedido" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+</div>
+
+<br>
+
+<div class="container-tabla mx-auto" style="width: 97vw; border: 1px solid #ccc; border-radius: 10px;">
+
+    <table id="table" class="table table-hover table-borderless table-striped align-middle">
+    <thead>
+        <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Dirección</th>
+        <th scope="col" class="text-center">Tiempo de entrega</th>
+        <th scope="col" class="text-center">Estado del pedido</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <th scope="row" class="text-center">1</th>
+        <td class="text-center">Quintana 750</td>
+        <td class="text-center">15min</td>
+        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
+        </tr>
+        <tr>
+        <th scope="row" class="text-center">2</th>
+        <td class="text-center">Ayacucho 1219</td>
+        <td class="text-center">55min</td>
+        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
+        </tr>
+        <tr>
+        <th scope="row" class="text-center">3</th>
+        <td class="text-center">Paz 432</td>
+        <td class="text-center">10min</td>
+        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+<?php require_once 'templates/footer.phtml'; ?>
