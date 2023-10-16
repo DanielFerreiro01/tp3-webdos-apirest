@@ -2,7 +2,7 @@
 
 class RyderHomeView {
 
-    public function showHomeR(){
+    public function showHomeR($pedidos){
         require_once './templates/homeRyder.phtml';
     }
 

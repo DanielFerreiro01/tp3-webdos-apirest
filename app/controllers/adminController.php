@@ -42,7 +42,7 @@ class AdminController {
         if ($id) {
             header('Location: http://localhost/tpe-web-dos/categorias-admin');
         } else {
-            $this->view->showError("Error al insertar la tarea");
+            $this->view->showError("Error al insertar la categoria");
         }
     }
 

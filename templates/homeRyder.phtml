@@ -27,24 +27,15 @@
         </tr>
     </thead>
     <tbody>
+    <?php foreach($pedidos as $pedido): ?>
         <tr>
-        <th scope="row" class="text-center">1</th>
-        <td class="text-center">Quintana 750</td>
-        <td class="text-center">15min</td>
+        <th scope="row" class="text-center"><?= $pedido->numeroPedido ?></th>
+        <td class="text-center"><?= $pedido->calle ?></td>
+        <td class="text-center"><?= $pedido->fechaEnvio ?></td>
         <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
         </tr>
         <tr>
-        <th scope="row" class="text-center">2</th>
-        <td class="text-center">Ayacucho 1219</td>
-        <td class="text-center">55min</td>
-        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
-        </tr>
-        <tr>
-        <th scope="row" class="text-center">3</th>
-        <td class="text-center">Paz 432</td>
-        <td class="text-center">10min</td>
-        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
-        </tr>
+    <?php endforeach; ?>
     </tbody>
     </table>
 </div>
