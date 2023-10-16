@@ -2,9 +2,18 @@
 
 class AdminHomeView {
 
-    public function showHomeA(){
+    public function showHomeA($tipoEnvios){
         require_once './templates/homeAdmin.phtml';
     }
+
+    public function showCategoriesA($tipoEnvios){
+        require_once './templates/categoriasAdmin.phtml';
+    }
+
+    public function showError($error) {
+        require './templates/error.phtml';
+    }
+
 
 }
 

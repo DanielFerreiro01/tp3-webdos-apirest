@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-09-2023 a las 23:19:24
+-- Tiempo de generación: 15-10-2023 a las 04:03:17
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -37,7 +37,8 @@ CREATE TABLE `pedido` (
   `producto` varchar(255) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `repartidorId` int(11) DEFAULT NULL
+  `repartidorId` int(11) DEFAULT NULL,
+  `tipoEnvioId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -70,6 +71,28 @@ CREATE TABLE `repartidor` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipodeenvio`
+--
+
+CREATE TABLE `tipodeenvio` (
+  `tipoEnvioId` int(11) NOT NULL,
+  `nombreEnvio` varchar(255) NOT NULL,
+  `zonasDisponibles` varchar(255) NOT NULL,
+  `premium` tinyint(1) NOT NULL,
+  `tipoPaquete` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tipodeenvio`
+--
+
+INSERT INTO `tipodeenvio` (`tipoEnvioId`, `nombreEnvio`, `zonasDisponibles`, `premium`, `tipoPaquete`) VALUES
+(3, 'Same Day Delivery', 'CABA y Gran Buenos Aires', 1, 'Hasta tipo 3'),
+(4, 'Envio Urgente', 'CABA y Gran Buenos Aires', 0, 'Hasta tipo 3');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
@@ -91,7 +114,9 @@ CREATE TABLE `usuario` (
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`numeroPedido`),
-  ADD KEY `repartidorId` (`repartidorId`);
+  ADD KEY `repartidorId` (`repartidorId`),
+  ADD KEY `tipoPaqueteId` (`tipoEnvioId`),
+  ADD KEY `tipoEnvioId` (`tipoEnvioId`);
 
 --
 -- Indices de la tabla `permiso`
@@ -108,11 +133,27 @@ ALTER TABLE `repartidor`
   ADD KEY `numeroPedido` (`numeroPedido`);
 
 --
+-- Indices de la tabla `tipodeenvio`
+--
+ALTER TABLE `tipodeenvio`
+  ADD PRIMARY KEY (`tipoEnvioId`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`usuarioId`),
   ADD KEY `rolId` (`rolId`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `tipodeenvio`
+--
+ALTER TABLE `tipodeenvio`
+  MODIFY `tipoEnvioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -122,7 +163,8 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`repartidorId`) REFERENCES `repartidor` (`repartidorId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`repartidorId`) REFERENCES `repartidor` (`repartidorId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`tipoEnvioId`) REFERENCES `tipodeenvio` (`tipoEnvioId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `repartidor`

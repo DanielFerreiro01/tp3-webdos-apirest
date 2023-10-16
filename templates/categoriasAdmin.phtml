@@ -1,0 +1,230 @@
+<?php require_once 'templates/headerAdmin.phtml'; ?>
+
+<br>
+
+<h2 style="margin-left: 25px;">Incluya sus categorías</h2>
+
+<br>
+
+<div class="container-categorias d-flex justify-content-center align-items-start" style="min-height: auto;">
+
+<!-- CARGA DE CATEGORÍAS ADMIN -->
+
+<!-- CARGA DE CATEGORÍA: CATEGORÍA DE VEHÍCULO -->
+
+<div class="conteiner-tipo-envio mx-auto" style="width: 30vw;">
+
+    <h3>Categoria de vehículo</h3>
+
+    <br>
+    
+    <form style="width: 30vw;">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre de la categoría del vehículo</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ej.: moto, bicicleta, utilitaria, etc." aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Precio del envío</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el precio por km" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ingrese el tipo de paquete aceptado</label>
+        <select class="form-control mr-sm-2" type="search" placeholder="Seleccione los tipos de paquetes aceptados" aria-label="Search">
+          <option value="opcion2">Hasta tipo 1</option>
+          <option value="opcion2">Hasta tipo 2</option>
+          <option value="opcion2">Hasta tipo 3</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Ingrese una imagen para esta categoría</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Crear categoría</button>
+    </form>
+  </div>
+
+<!-- CARGA DE CATEGORÍA: TIPO DE ENVIO -->
+
+  <div class="conteiner-tipo-envio mx-auto" style="width: 30vw;">
+
+    <h3>Tipos de envíos</h3>
+
+    <br>
+    
+    <form action="agregar-categoria" method="POST" style="width: 30vw;">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre del tipo de envío</label>
+        <input name="tipo-envio" class="form-control mr-sm-2" type="search" placeholder="Ej.: mismo día, envío rapido, etc" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ingrese las zonas disponibles para este tipo de envío</label>
+        <select name="zonas-disponibles" class="form-control mr-sm-2" type="search" placeholder="Seleccione las zonas aceptadas" aria-label="Search">
+          <option value="CABA">CABA</option>
+          <option value="Provincia de Buenos Aires">Provincia de Buenos Aires</option>
+          <option value="Todo Argentina">Todo Argentina</option>
+          <option value="Internacional">Internacional</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ingrese el tipo de paquete aceptado</label>
+        <select name="paquete-aceptado" class="form-control mr-sm-2" type="search" placeholder="Seleccione los tipos de paquetes aceptados" aria-label="Search">
+          <option value="Solo tipo 1">Solo tipo 1</option>
+          <option value="Hasta tipo 2">Hasta tipo 2</option>
+          <option value="Todos los paquetes">Todos los paquetes</option>
+        </select>
+      </div>
+      <div class="form-check">
+        <input name="premium" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        ¿Envío solo para usuarios premium?
+        </label>
+      </div>
+      <br>
+
+      <button type="submit" class="btn btn-primary">Crear categoría</button>
+    </form>
+  </div>
+
+<!-- CARGA DE CATEGORÍA: TIPO DE PAQUETE -->
+
+<div class="conteiner-tipo-envio mx-auto" style="width: 30vw;">
+
+    <h3>Tipos de paquetes</h3>
+
+    <br>
+
+    <form style="width: 30vw;">
+      <div class="mb-3">
+        <label for="" class="form-label">Nombre del tipo de paquete</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Nombre del tipo de paquete" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Dimensiones</label>
+        <input class="form-control mr-sm-2" type="search" placeholder="Ingrese las dimensiones" aria-label="Search">
+      </div>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Ingrese una imagen para esta categoría</label>
+        <input class="form-control" type="file" id="formFile">
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Crear categoría</button>
+    </form>
+  </div>
+
+<!-- CARGA DE CATEGORÍA: CATEGORÍA DE PRODUCTO -->
+
+
+</div>
+
+<!-- TABLA DE CATEGORIAS: LISTAR, MODIFICAR, ELIMINAR -->
+
+<div class="container-table-category" style="margin-top:100px;">
+
+<h3 style="margin-left: 25px; margin-bottom:25px;">Listado de categorias</h3>
+
+<div class="container-tabla mx-auto" style="width: 97vw; border: 1px solid #ccc; border-radius: 10px;">
+
+<div class="lista-categorias">
+<ul class="nav" style="display: flex; flex-direction: row;">
+    <li class="nav-item">
+        <a class="nav-link" style="color: rgba(0, 0, 0, 0.55);" href="filtro-tipo-envio">Tipo de Envío</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" style="color: rgba(0, 0, 0, 0.55);" href="filtro-tipo-paquete">Tipo de Paquete</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" style="color: rgba(0, 0, 0, 0.55);" href="filtro-tipo-vehiculo">Tipo de Vehículo</a>
+    </li>
+</ul>
+
+</div>
+
+<table id="table" class="table table-hover table-borderless table-striped align-middle">
+<thead>
+    <tr>
+    <th scope="col" class="text-center">Id</th>
+    <th scope="col" class="text-center">Nombre del envio</th>
+    <th scope="col" class="text-center">Zonas disponibles</th>
+    <th scope="col" class="text-center">Premium</th>
+    <th scope="col" class="text-center">Tipo de paquete</th>
+    </tr>
+</thead>
+<tbody>
+  <?php foreach($tipoEnvios as $tipoEnvio): ?>
+    <tr>
+    <th scope="row" class="text-center"><?= $tipoEnvio->tipoEnvioId ?></th>
+    <td class="text-center"><?= $tipoEnvio->nombreEnvio ?></td>
+    <td class="text-center"><?= $tipoEnvio->zonasDisponibles ?></td>
+    <td class="text-center"><?= $tipoEnvio->premium ?></td>
+    <td class="text-center"><?= $tipoEnvio->tipoPaquete ?></td>
+    <td class="text-center">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Editar
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#myModal<?= $tipoEnvio->tipoEnvioId ?>" href="#">Modificar</a></li>
+          <li><a class="dropdown-item" href="eliminar-categoria/<?= $tipoEnvio->tipoEnvioId ?>">Eliminar</a></li>
+        </ul>
+      </div>
+    </td>
+    </tr>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="myModal<?= $tipoEnvio->tipoEnvioId ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Tipo de Envío</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+            <form action="modificar-categoria/<?= $tipoEnvio->tipoEnvioId ?>" method="POST">
+              
+              <input type="hidden" name="tipoEnvioId" value="<?= $tipoEnvio->tipoEnvioId ?>">
+              <div class="mb-3">
+                <label for="nombreEnvio" class="form-label">Nombre del Envío</label>
+                <input type="text" class="form-control" id="nombreEnvio" name="tipo-envio" value="<?= $tipoEnvio->nombreEnvio ?>">
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">Ingrese las zonas disponibles para este tipo de envío</label>
+                <select name="zonas-disponibles" class="form-control mr-sm-2" type="search" placeholder="Seleccione las zonas aceptadas" aria-label="Search">
+                  <option value="CABA">CABA</option>
+                  <option value="Provincia de Buenos Aires">Provincia de Buenos Aires</option>
+                  <option value="Todo Argentina">Todo Argentina</option>
+                  <option value="Internacional">Internacional</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">Ingrese el tipo de paquete aceptado</label>
+                <select name="paquete-aceptado" class="form-control mr-sm-2" type="search" placeholder="Seleccione los tipos de paquetes aceptados" aria-label="Search">
+                  <option value="Solo tipo 1">Solo tipo 1</option>
+                  <option value="Hasta tipo 2">Hasta tipo 2</option>
+                  <option value="Todos los paquetes">Todos los paquetes</option>
+                </select>
+              </div>
+              <div class="form-check">
+                <input name="premium" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                ¿Envío solo para usuarios premium?
+                </label>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<?php require_once 'templates/footer.phtml';?>

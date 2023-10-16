@@ -58,6 +58,14 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller = new AdminController();
         $controller->showHomeA();
         break;
+    case 'categorias-admin':
+        $controller = new AdminController();
+        $controller->showCategoriesA();
+        break;
+    case 'agregar-categoria':
+        $controller = new AdminController();
+        $controller->addCategory();
+        break;
     case 'listar':
         $controller = new AdminController();
         $controller->showOrders();
@@ -65,6 +73,14 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
     case 'agregar':
         $controller = new AdminController();
         $controller->addOrder();
+        break;
+    case 'eliminar-categoria':
+        $controller = new AdminController();
+        $controller->deleteCategory($params[1]);
+        break;
+    case 'modificar-categoria':
+        $controller = new AdminController();
+        $controller->updateCategory($params[1]);
         break;
     case 'eliminar':
         $controller = new AdminController();

@@ -2,7 +2,7 @@
 
 <br>
 
-<h2 style="margin-left: 25px;">Ingrese sus pedidos</h2>
+<h2 style="margin-left: 30px;">Ingrese sus pedidos</h2>
 
 <br>
 
@@ -45,12 +45,13 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Ingrese el total del pedido" aria-label="Search">
       </div>
       <div class="mb-3">
-        <label for="" class="form-label">Categoría</label>
+        <label for="" class="form-label">Tipo de enivo</label>
         <select class="form-control mr-sm-2" type="search" placeholder="Seleccione una categoría" aria-label="Search">
-          <option value="opcion1">Bicicleta</option>
-          <option value="opcion2">Moto</option>
-          <option value="opcion3">Utilitaria</option>
+          <?php foreach($tipoEnvios as $tipoEnvio): ?>
+            <option value="<?= $tipoEnvio->id ?>"><?= $tipoEnvio->nombreEnvio ?></option>
+          <?php endforeach; ?>
         </select>
+
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Repartidor</label>
@@ -71,9 +72,9 @@
   <div class="container-tabla mx-auto">
 
   <!-- Buscador de pedidos -->
-    <div class="container-nav-form mx-auto">
-        <form class="form-inline my-4 my-lg-2">
-            <input class="form-control mr-sm-2" style="width: 60%;" type="search" placeholder="Buscar pedido" aria-label="Search">
+    <div class="container-nav-form">
+        <form class="form-inline my-4 my-lg-2" style="display: flex; flex-direction: row;">
+            <input class="form-control mr-sm-2" style="width: 60%; margin-right:20px;" type="search" placeholder="Buscar pedido" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
     </div>
@@ -91,12 +92,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr class="table-row">
             <th scope="row" class="text-center">1</th>
               <td class="text-center">Grido helados</td>
               <td class="text-center">Quintana 750</td>
               <td class="text-center">Repartidor 1</td>
-              <td class="text-center"><a href="" style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
+              <td class="text-center"><a style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
               <td class="text-center">
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -109,12 +110,23 @@
                 </div>
               </td>
             </tr>
+            <!-- Prueba de despligue de informacion -->
+            <tr class="table-details" style="display: none; width: 100%; overflow: hidden; background-color: #f9f9f9; color: #333; padding: 10px;">
+              <th scope="row" class="text-center">1</th>
+                <td class="text-center">Más info</td>
+                <td class="text-center">Esto es más info</td>
+                <td class="text-center">Esto también</td>
+                <td class="text-center">Esto es más info</td>
+                <td class="text-center">Esto también</td>
+              </th>
+            </tr>
+            <!-- Fin de prueba -->
             <tr>
             <th scope="row" class="text-center">2</th>
               <td class="text-center">Los Manjares</td>
               <td class="text-center">Ayacucho 1219</td>
               <td class="text-center">Repartidor 2</td>
-              <td class="text-center"><a href="" style="background-color: #CEEE9F; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Entregado</a></td>
+              <td class="text-center"><a style="background-color: #CEEE9F; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Entregado</a></td>
               <td class="text-center">
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -132,7 +144,7 @@
               <td class="text-center">Tierra de azafranes</td>
               <td class="text-center">Paz 432</td>
               <td class="text-center">Repartidor 3</td>
-              <td class="text-center"><a href="" style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
+              <td class="text-center"><a style="background-color: #F6CEC8; padding: 5px 15px 5px 15px; border-radius: 50px; text-decoration: none; color: black;">Sin entregar</a></td>
               <td class="text-center">
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
