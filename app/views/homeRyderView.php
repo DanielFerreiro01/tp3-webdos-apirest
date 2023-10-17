@@ -2,7 +2,7 @@
 
 class RyderHomeView {
 
-    public function showHomeR($pedidos){
+    public function showHomeR($pedidos, $filtro, $tipoEnvios){
         require_once './templates/homeRyder.phtml';
     }
 

@@ -2,7 +2,7 @@
 
 class AdminHomeView {
 
-    public function showHomeA($tipoEnvios){
+    public function showHomeA($tipoEnvios, $pedidos, $repartidores){
         require_once './templates/homeAdmin.phtml';
     }
 

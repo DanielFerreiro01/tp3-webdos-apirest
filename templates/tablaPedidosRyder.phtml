@@ -1,0 +1,23 @@
+
+
+
+
+<?php foreach($pedidos as $pedido): 
+        if(empty($filtro) || $pedido->tipoEnvioId == $filtro): ?>
+            <?php if($pedido->estadoPedido == 0): ?>     
+                <tr>
+                <th scope="row" class="text-center"><?= $pedido->numeroPedido ?></th>
+                <td class="text-center"><?= $pedido->calle ?></td>
+                <td class="text-center"><?= $pedido->fechaEnvio ?></td>
+                <td class="text-center"><a href="finalizar-pedido/<?= $pedido->numeroPedido ?>" class="btn btn-primary">Finalizar</a></td>
+                </tr>
+            <?php else: ?>
+                <tr>
+                <th scope="row" class="text-center"><?= $pedido->numeroPedido ?></th>
+                <td class="text-center"><?= $pedido->calle ?></td>
+                <td class="text-center"><?= $pedido->fechaEnvio ?></td>
+                <td class="text-center"><a href="finalizar-pedido/<?= $pedido->numeroPedido ?>" class="btn btn-primary">Finalizar</a></td>
+                </tr>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>

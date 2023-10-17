@@ -1,6 +1,6 @@
 <?php
 require_once 'app/controllers/adminController.php';
-// require_once 'app/controllers/authController.php';
+require_once 'app/controllers/authController.php';
 require_once 'app/controllers/homeController.php';
 require_once 'app/controllers/ryderController.php';
 
@@ -39,20 +39,14 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
     case 'acceso-publico':
         $controller = new RyderController();
         $controller->showHomeR();
-        // $controller = new HomeController();
-        // $controller->showAccess();
         break;
-    // case 'home-ryder':
-    //     $controller = new RyderController();
-    //     $controller->showHomeR();
-    //     break;  
-    case 'finalizar':
+    case 'finalizar-pedido':
         $controller = new RyderController();
-        $controller->finishOrder($params[0]);
+        $controller->finishOrder($params[1]);
         break;
-    case 'acceso-admin':
-        $controller = new AuthController();
-        $controller->showLoginA();
+    case 'filtrar-pedido':
+        $controller = new RyderController();
+        $controller->showHomeR();
         break;
     case 'home-admin':
         $controller = new AdminController();
@@ -66,11 +60,7 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller = new AdminController();
         $controller->addCategory();
         break;
-    case 'listar':
-        $controller = new AdminController();
-        $controller->showOrders();
-        break;
-    case 'agregar':
+    case 'agregar-pedido':
         $controller = new AdminController();
         $controller->addOrder();
         break;
@@ -82,11 +72,23 @@ switch ($params[0]) { // en la primer posicion tengo la accion real
         $controller = new AdminController();
         $controller->updateCategory($params[1]);
         break;
-    case 'eliminar':
+    case 'eliminar-pedido':
         $controller = new AdminController();
-        $controller->removeOrder($params[0]);
+        $controller->removeOrder($params[1]);
         break;
-    case 'auth':
+    case 'login':
+        $controller = new AuthController();
+        $controller->showLogin();
+        break;
+    case 'registrar':
+        $controller = new AuthController();
+        $controller->registrarse();
+        break;
+    case 'registro':
+        $controller = new AuthController();
+        $controller->showRegistro();
+        break;
+    case 'logear':
         $controller = new AuthController();
         $controller->auth();
         break;

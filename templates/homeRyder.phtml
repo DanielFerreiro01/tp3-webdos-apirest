@@ -7,10 +7,30 @@
 <br>
 
 <div class="container-nav-form mx-auto" style="width: 97vw;">
-    <form class="form-inline my-4 my-lg-2 w-50" style="width: 40vw; ">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar pedido" aria-label="Search">
+    <form class="form-inline my-4 my-lg-2 w-50" style="display: flex; flex-direction: row;">
+        <input class="form-control mr-sm-2" style="width: 60%; margin-right:20px;" type="search" placeholder="Buscar pedido" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
     </form>
+    <div class="filtro">
+    <form action="filtrar-pedido" method="POST" class="form-inline my-4 my-lg-2 w-50" style="display: flex; flex-direction: row;">
+        <select name="tipo-envio" style="width: 60%; margin-right:20px;" class="form-control mr-sm-2" type="search" placeholder="Seleccione una categoría" aria-label="Search">
+            <?php foreach($tipoEnvios as $envio): ?>
+                <option value="<?= $envio->tipoEnvioId ?>"><?= $envio->nombreEnvio ?></option>
+            <?php endforeach; ?>
+            </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+    </form>
+    </div>
+
+    <?php foreach($pedidos as $pedido): 
+        if($pedido->tipoEnvioId == $filtro){?>
+        <ul>
+            <li><?= $pedido->nombreCliente ?></li>
+            <li><?= $pedido->calle ?></li>
+            <li><?= $pedido->fechaEnvio ?></li>
+        </ul>
+    <?php } endforeach; ?>
+
 </div>
 
 <br>
@@ -28,16 +48,19 @@
     </thead>
     <tbody>
     <?php foreach($pedidos as $pedido): ?>
-        <tr>
-        <th scope="row" class="text-center"><?= $pedido->numeroPedido ?></th>
-        <td class="text-center"><?= $pedido->calle ?></td>
-        <td class="text-center"><?= $pedido->fechaEnvio ?></td>
-        <td class="text-center"><a href="finalizar" class="btn btn-primary">Finalizar</a></td>
-        </tr>
-        <tr>
+        <?php if($pedido->estadoPedido == 0){ ?>     
+            <tr>
+            <th scope="row" class="text-center"><?= $pedido->numeroPedido ?></th>
+            <td class="text-center"><?= $pedido->calle ?></td>
+            <td class="text-center"><?= $pedido->fechaEnvio ?></td>
+            <td class="text-center"><a href="finalizar-pedido/<?= $pedido->numeroPedido ?>" class="btn btn-primary">Finalizar</a></td>
+            <tr>
+        <?php } ?>
     <?php endforeach; ?>
     </tbody>
     </table>
 </div>
 
+
 <?php require_once 'templates/footer.phtml'; ?>
+
