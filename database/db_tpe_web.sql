@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2023 a las 04:03:17
+-- Tiempo de generación: 17-10-2023 a las 23:12:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -33,13 +33,22 @@ CREATE TABLE `pedido` (
   `calle` varchar(255) DEFAULT NULL,
   `ciudad` varchar(255) DEFAULT NULL,
   `cp` varchar(255) DEFAULT NULL,
-  `fechaEnvio` date DEFAULT NULL,
+  `fechaEnvio` datetime DEFAULT NULL,
   `producto` varchar(255) DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `repartidorId` int(11) DEFAULT NULL,
-  `tipoEnvioId` int(11) NOT NULL
+  `repartidorId` int(11) NOT NULL,
+  `tipoEnvioId` int(11) NOT NULL,
+  `estadoPedido` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`numeroPedido`, `nombreCliente`, `calle`, `ciudad`, `cp`, `fechaEnvio`, `producto`, `cantidad`, `total`, `repartidorId`, `tipoEnvioId`, `estadoPedido`) VALUES
+(12, 'Iglu', 'Avellaneda 1579', 'Tandil', '7000', '2023-10-16 01:30:00', 'Helado', 1, 1456, 1, 21, 1),
+(18, 'Iglu', 'Avellaneda 1579', 'Tandil', '7000', '2023-10-17 17:29:00', 'Helado', 1, 1456, 2, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -49,8 +58,15 @@ CREATE TABLE `pedido` (
 
 CREATE TABLE `permiso` (
   `rolld` int(11) NOT NULL,
-  `tipoPermiso` int(11) DEFAULT NULL
+  `tipoPermiso` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `permiso`
+--
+
+INSERT INTO `permiso` (`rolld`, `tipoPermiso`) VALUES
+(1, 'admin');
 
 -- --------------------------------------------------------
 
@@ -60,13 +76,18 @@ CREATE TABLE `permiso` (
 
 CREATE TABLE `repartidor` (
   `repartidorId` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `apellido` varchar(255) DEFAULT NULL,
+  `nombreCompleto` varchar(255) DEFAULT NULL,
   `vehiculo` varchar(255) DEFAULT NULL,
-  `disponibilidad` tinyint(1) DEFAULT NULL,
-  `numeroPedido` int(11) DEFAULT NULL,
-  `usuarioId` int(11) DEFAULT NULL
+  `disponibilidad` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `repartidor`
+--
+
+INSERT INTO `repartidor` (`repartidorId`, `nombreCompleto`, `vehiculo`, `disponibilidad`) VALUES
+(1, 'Facundo Perez', 'Utilitaria', 1),
+(2, 'Juan Rodriguez', 'Utilitaria', 1);
 
 -- --------------------------------------------------------
 
@@ -87,8 +108,8 @@ CREATE TABLE `tipodeenvio` (
 --
 
 INSERT INTO `tipodeenvio` (`tipoEnvioId`, `nombreEnvio`, `zonasDisponibles`, `premium`, `tipoPaquete`) VALUES
-(3, 'Same Day Delivery', 'CABA y Gran Buenos Aires', 1, 'Hasta tipo 3'),
-(4, 'Envio Urgente', 'CABA y Gran Buenos Aires', 0, 'Hasta tipo 3');
+(19, 'OCA', 'CABA', 0, 'Solo tipo 1'),
+(21, 'delivery', 'CABA', 0, 'Solo tipo 1');
 
 -- --------------------------------------------------------
 
@@ -99,11 +120,17 @@ INSERT INTO `tipodeenvio` (`tipoEnvioId`, `nombreEnvio`, `zonasDisponibles`, `pr
 CREATE TABLE `usuario` (
   `usuarioId` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  `apellido` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `contraseña` varchar(255) DEFAULT NULL,
   `rolId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuarioId`, `nombre`, `email`, `contraseña`, `rolId`) VALUES
+(1, 'webadmin', 'webadmin@gmail.com', '$2y$10$cfgw6Trcs3q6YNj4.7wbSuogi0kNP3CEwi0ib9G4qmmRN.3zKUj2u', 1);
 
 --
 -- Índices para tablas volcadas
@@ -128,9 +155,7 @@ ALTER TABLE `permiso`
 -- Indices de la tabla `repartidor`
 --
 ALTER TABLE `repartidor`
-  ADD PRIMARY KEY (`repartidorId`),
-  ADD KEY `usuarioId` (`usuarioId`),
-  ADD KEY `numeroPedido` (`numeroPedido`);
+  ADD PRIMARY KEY (`repartidorId`);
 
 --
 -- Indices de la tabla `tipodeenvio`
@@ -150,10 +175,16 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `numeroPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT de la tabla `tipodeenvio`
 --
 ALTER TABLE `tipodeenvio`
-  MODIFY `tipoEnvioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tipoEnvioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
@@ -165,13 +196,6 @@ ALTER TABLE `tipodeenvio`
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`repartidorId`) REFERENCES `repartidor` (`repartidorId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`tipoEnvioId`) REFERENCES `tipodeenvio` (`tipoEnvioId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `repartidor`
---
-ALTER TABLE `repartidor`
-  ADD CONSTRAINT `repartidor_ibfk_1` FOREIGN KEY (`usuarioId`) REFERENCES `usuario` (`usuarioId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `repartidor_ibfk_2` FOREIGN KEY (`numeroPedido`) REFERENCES `pedido` (`numeroPedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
