@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2023 a las 23:12:44
+-- Tiempo de generación: 14-11-2023 a las 00:17:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -47,8 +47,13 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`numeroPedido`, `nombreCliente`, `calle`, `ciudad`, `cp`, `fechaEnvio`, `producto`, `cantidad`, `total`, `repartidorId`, `tipoEnvioId`, `estadoPedido`) VALUES
-(12, 'Iglu', 'Avellaneda 1579', 'Tandil', '7000', '2023-10-16 01:30:00', 'Helado', 1, 1456, 1, 21, 1),
-(18, 'Iglu', 'Avellaneda 1579', 'Tandil', '7000', '2023-10-17 17:29:00', 'Helado', 1, 1456, 2, 19, 1);
+(22, 'Iglu', 'Avellaneda 1579', 'Tandil', '7000', '2023-10-20 02:27:00', 'Helado', 1, 1456, 1, 22, 1),
+(28, 'Giuliani', 'Av. España 1567', 'Tandil', '7000', '2023-11-13 23:59:00', 'Helado', 1, 1568, 1, 22, 1),
+(29, 'El Estribo', 'Av. España 1567', 'Tandil', '7000', '2023-11-13 23:59:00', 'Pollo', 1, 1568, 1, 22, 1),
+(30, 'El Estribo', 'Av. España 1567', 'Tandil', '7000', '2023-11-13 23:59:00', 'Pollo y papas', 1, 1568, 1, 22, 1),
+(32, 'El Estribo', 'Av. España 1567', 'Tandil', '7000', '2023-11-22 23:59:00', 'Pollo y papas', 1, 1568, 2, 22, 0),
+(33, 'El Estribo', 'Av. España 1567', 'Tandil', '7000', '2023-11-22 23:59:00', 'Pollo y papas', 1, 1568, 1, 22, 0),
+(35, 'Lucciano´s', 'Av. España 1567', 'Tandil', '7000', '2023-11-13 23:59:00', 'Helado', 1, 1568, 1, 22, 0);
 
 -- --------------------------------------------------------
 
@@ -108,8 +113,9 @@ CREATE TABLE `tipodeenvio` (
 --
 
 INSERT INTO `tipodeenvio` (`tipoEnvioId`, `nombreEnvio`, `zonasDisponibles`, `premium`, `tipoPaquete`) VALUES
-(19, 'OCA', 'CABA', 0, 'Solo tipo 1'),
-(21, 'delivery', 'CABA', 0, 'Solo tipo 1');
+(19, 'Andreani', 'Tandil', 0, 'Hasta tipo 2'),
+(22, 'Same Day Delivery', 'CABA', 1, 'Hasta tipo 2'),
+(23, 'Envio Estandar', 'Provincia de Buenos Aires', 1, 'Hasta tipo 2');
 
 -- --------------------------------------------------------
 
@@ -130,7 +136,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuarioId`, `nombre`, `email`, `contraseña`, `rolId`) VALUES
-(1, 'webadmin', 'webadmin@gmail.com', '$2y$10$cfgw6Trcs3q6YNj4.7wbSuogi0kNP3CEwi0ib9G4qmmRN.3zKUj2u', 1);
+(1, 'webadmin', 'webadmin@gmail.com', '$2y$10$cfgw6Trcs3q6YNj4.7wbSuogi0kNP3CEwi0ib9G4qmmRN.3zKUj2u', 1),
+(2, 'Daniel Ferreiro', 'danielferreiro@gmail.com', '$2y$10$G1IS7Z4ZCHYHlevab3hPNuKCVyU6L9vbSpEp0VqzamyNGLfTVbvTO', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -178,13 +185,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `numeroPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `numeroPedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `tipodeenvio`
 --
 ALTER TABLE `tipodeenvio`
-  MODIFY `tipoEnvioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `tipoEnvioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `usuarioId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
