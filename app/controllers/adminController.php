@@ -23,7 +23,7 @@ class AdminController {
     
     public function showHomeA() {
         AuthHelper::verify();
-        $pedidos = $this->modelPedidos->getPedidos();
+        $pedidos = $this->modelPedidos->getPedidos(null);
         $repartidores = $this->modelRepartidores->getRepartidores();
         $tipoEnvios = $this->model->getCategoriesEnvios();
         $this->view->showHomeA($tipoEnvios, $pedidos, $repartidores);

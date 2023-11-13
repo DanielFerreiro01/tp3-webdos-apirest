@@ -22,6 +22,17 @@ class categoriesModel {
 
     }
 
+    public function getCategoria($envioId){
+        $query = $this->con->prepare('SELECT * FROM tipodeenvio WHERE tipoEnvioId = ?');
+        $query->execute([$envioId]);
+
+        // $tipoEnvios es un arreglo de tareas
+        $tipoEnvios = $query->fetch(PDO::FETCH_OBJ);
+
+        return $tipoEnvios;
+
+    }
+
     function insertCategory($tipoEnvio, $zonas, $premium, $paqueteAceptados) {
         $query = $this->con->prepare('INSERT INTO tipodeenvio (nombreEnvio, zonasDisponibles, premium, tipoPaquete) VALUES(?,?,?,?)');
         $query->execute([$tipoEnvio, $zonas, $premium, $paqueteAceptados]);

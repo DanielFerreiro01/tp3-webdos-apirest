@@ -16,7 +16,7 @@ class RyderController{
     }
 
     public function showHomeR(){
-        $pedidos = $this->model->getPedidos();
+        $pedidos = $this->model->getPedidos(null);
         $tipoEnvios = $this->modelCategory->getCategoriesEnvios();
         $filtro = isset($_POST['tipo-envio']) ? $_POST['tipo-envio'] : null;
         $this->view->showHomeR($pedidos, $filtro, $tipoEnvios);
